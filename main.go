@@ -15,8 +15,14 @@ func main() {
 	text = strings.Replace(text, "\n", "", -1)
 	inputParts := strings.Fields(text)
 
-	operand1, _ := strconv.Atoi(inputParts[0])
-	operand2, _ := strconv.Atoi(inputParts[2])
+	operand1, err1 := strconv.Atoi(inputParts[0])
+	if err1 != nil {
+		panic(err1)
+	}
+	operand2, err2 := strconv.Atoi(inputParts[2])
+	if err2 != nil {
+		panic(err2)
+	}
 	operator := inputParts[1]
 	var result int
 
