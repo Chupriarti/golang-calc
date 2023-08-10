@@ -16,15 +16,13 @@ func main() {
 	inputParts := strings.Fields(text)
 
 	operand1, err1 := strconv.Atoi(inputParts[0])
-	if err1 != nil {
-		panic(err1)
-	}
 	operand2, err2 := strconv.Atoi(inputParts[2])
-	if err2 != nil {
-		panic(err2)
-	}
 	operator := inputParts[1]
 	var result int
+
+	if (err1 != nil && err2 == nil) || (err1 == nil && err2 != nil) {
+		panic("ОШИБКА: Используются одновременно разные системы счисления")
+	}
 
 	switch operator {
 	case "+":
