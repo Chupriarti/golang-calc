@@ -17,11 +17,17 @@ func main() {
 
 	operand1, err1 := strconv.Atoi(inputParts[0])
 	operand2, err2 := strconv.Atoi(inputParts[2])
+	isRomanCalculation := err1 != nil && err2 != nil
 	operator := inputParts[1]
 	var result int
 
 	if (err1 != nil && err2 == nil) || (err1 == nil && err2 != nil) {
 		panic("ОШИБКА: Используются одновременно разные системы счисления")
+	}
+
+	if (isRomanCalculation) {
+		operand1 = romanToInt(inputParts[0])
+		operand2 = romanToInt(inputParts[2])
 	}
 
 	switch operator {
@@ -36,7 +42,11 @@ func main() {
 	}
 
 	fmt.Println("Result: ")
-	fmt.Println(result)
+	var finalResult string
+	if (isRomanCalculation) {
+		finalResult = intToRoman(result)
+	}
+	fmt.Println(finalResult)
 }
 
 func intToRoman(number int) string {
