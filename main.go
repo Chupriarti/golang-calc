@@ -14,6 +14,9 @@ func main() {
 	text, _ := reader.ReadString('\n')
 	text = strings.Replace(text, "\n", "", -1)
 	inputParts := strings.Fields(text)
+	if (len(inputParts) != 3){
+		panic("ОШИБКА: Формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)й")
+	}
 
 	operand1, err1 := strconv.Atoi(inputParts[0])
 	operand2, err2 := strconv.Atoi(inputParts[2])
