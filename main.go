@@ -41,12 +41,12 @@ func main() {
 		result = int(operand1 / operand2)
 	}
 
-	fmt.Println("Result: ")
-	var finalResult string
 	if (isRomanCalculation) {
-		finalResult = intToRoman(result)
+		fmt.Println("Result:", intToRoman(result))
+	} else {
+		fmt.Println("Result:", result)
 	}
-	fmt.Println(finalResult)
+	
 }
 
 func intToRoman(number int) string {
