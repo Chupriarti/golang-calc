@@ -34,6 +34,9 @@ func main() {
 	case "+":
 		result = operand1 + operand2
 	case "-":
+		if (isRomanCalculation && operand2 > operand1){
+			panic("ОШИБКА: В римской системе нет отрицательных чисел")
+		}
 		result = operand1 - operand2
 	case "*":
 		result = operand1 * operand2
