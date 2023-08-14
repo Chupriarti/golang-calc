@@ -10,12 +10,13 @@ import (
 
 func main() {
     reader := bufio.NewReader(os.Stdin)
-    fmt.Println("# Welcome to KATA calculator! What to calc?")
+    fmt.Println("Ката Калькулятор. Поддерживаются операции с арабскими и римскими числами: +, -, *, / .")
+	fmt.Println("Введитие выражение в формате: 4 + 7 или XIV * X")
 	text, _ := reader.ReadString('\n')
 	text = strings.Replace(text, "\n", "", -1)
 	inputParts := strings.Fields(text)
 	if (len(inputParts) != 3){
-		panic("ОШИБКА: Формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)й")
+		panic("ОШИБКА: Формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)")
 	}
 
 	operand1, err1 := strconv.Atoi(inputParts[0])
@@ -48,9 +49,9 @@ func main() {
 	}
 
 	if (isRomanCalculation) {
-		fmt.Println("Result:", intToRoman(result))
+		fmt.Println("Результат:", intToRoman(result))
 	} else {
-		fmt.Println("Result:", result)
+		fmt.Println("Результат:", result)
 	}
 	
 }
