@@ -1,21 +1,21 @@
 package main
 
 import (
-  "bufio"
-  "fmt"
-  "os"
-  "strings"
-  "strconv"
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
 )
 
 func main() {
-    reader := bufio.NewReader(os.Stdin)
-    fmt.Println("Ката Калькулятор. Поддерживаются операции с арабскими и римскими числами: +, -, *, / .")
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("Ката Калькулятор. Поддерживаются операции с арабскими и римскими числами: +, -, *, / .")
 	fmt.Println("Введитие выражение в формате: 4 + 7 или XIV * X")
 	text, _ := reader.ReadString('\n')
 	text = strings.Replace(text, "\n", "", -1)
 	inputParts := strings.Fields(text)
-	if (len(inputParts) != 3){
+	if len(inputParts) != 3 {
 		panic("ОШИБКА: Формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *)")
 	}
 
@@ -29,7 +29,7 @@ func main() {
 		panic("ОШИБКА: Используются одновременно разные системы счисления")
 	}
 
-	if (isRomanCalculation) {
+	if isRomanCalculation {
 		operand1 = romanToInt(inputParts[0])
 		operand2 = romanToInt(inputParts[2])
 	}
@@ -38,7 +38,7 @@ func main() {
 	case "+":
 		result = operand1 + operand2
 	case "-":
-		if (isRomanCalculation && operand2 > operand1){
+		if isRomanCalculation && operand2 > operand1 {
 			panic("ОШИБКА: В римской системе нет отрицательных чисел")
 		}
 		result = operand1 - operand2
@@ -48,12 +48,12 @@ func main() {
 		result = int(operand1 / operand2)
 	}
 
-	if (isRomanCalculation) {
+	if isRomanCalculation {
 		fmt.Println("Результат:", intToRoman(result))
 	} else {
 		fmt.Println("Результат:", result)
 	}
-	
+
 }
 
 func intToRoman(number int) string {
